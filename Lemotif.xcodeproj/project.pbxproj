@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC2826E92466EB860028EFBE /* motifDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2826E82466EB860028EFBE /* motifDisplayController.swift */; };
 		FC40BE3B2463BE9B00814365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC40BE3A2463BE9B00814365 /* AppDelegate.swift */; };
 		FC40BE3D2463BE9B00814365 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC40BE3C2463BE9B00814365 /* SceneDelegate.swift */; };
 		FC40BE3F2463BE9B00814365 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC40BE3E2463BE9B00814365 /* FirstViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC2826E82466EB860028EFBE /* motifDisplayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = motifDisplayController.swift; sourceTree = "<group>"; };
 		FC40BE372463BE9B00814365 /* Lemotif.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lemotif.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC40BE3A2463BE9B00814365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC40BE3C2463BE9B00814365 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				FC40BE4A2463BEA200814365 /* Info.plist */,
 				FC40BE6C2463E1E500814365 /* UITextViewPlaceholder.swift */,
 				FC40BE722464384600814365 /* StyleViewController.swift */,
+				FC2826E82466EB860028EFBE /* motifDisplayController.swift */,
 			);
 			path = Lemotif;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				FC40BE6D2463E1E500814365 /* UITextViewPlaceholder.swift in Sources */,
 				FC40BE3F2463BE9B00814365 /* FirstViewController.swift in Sources */,
 				FC40BE3B2463BE9B00814365 /* AppDelegate.swift in Sources */,
+				FC2826E92466EB860028EFBE /* motifDisplayController.swift in Sources */,
 				FC40BE3D2463BE9B00814365 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

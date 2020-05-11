@@ -14,6 +14,16 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @IBOutlet weak var stylePicker: UIPickerView!
     var stylePickerData: [String] = [String]()
     
+    var detailOptions: [[String]] = [
+        ["Grid size as percentage of motif size", "Line angle intervals", "Line Widths"],
+        ["Number of Circles","Min circle radius as percentage of motif size","Max circle radius as percentage of motif size"],
+        ["Icon size as percentage of motif size", "Icon size variability","Icon fill Density"],
+        ["Angle rotation", "Grid size", "Line widths"],
+        ["Amount of bend in string", "Number of strings", "String widths"],
+        ["Variation in color intensity", "",""]
+    ]
+    
+    
     //option prompts
     @IBOutlet weak var optionLabel1: UILabel!
     @IBOutlet weak var optionLabel3: UILabel!
@@ -23,14 +33,28 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     //option sliders
     @IBOutlet weak var optionSlider1: UISlider!
-    
     @IBOutlet weak var optionSlider2: UISlider!
-    
     @IBOutlet weak var optionSlider3: UISlider!
     var optionSliders: Array<UISlider?> = []
 
     
+    @IBOutlet weak var previewImage: UIImageView!
+    
+    
     var selectedStyle: String = ""
+    
+    var imageOptions: [String] = ["Carpet","Circle","Glass", "Tile", "String","WaterColor"]
+    
+    
+//    @IBAction func newSelection(_ sender: Any) {
+//        var row = stylePicker.selectedRow(inComponent: 0)
+//        optionSelector(style: row)
+//        print(row)
+//
+//    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -44,13 +68,42 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
         optionLabels = Array(arrayLiteral: optionLabel1, optionLabel2, optionLabel3)
         optionSliders = Array(arrayLiteral: optionSlider1, optionSlider2,optionSlider3)
-
+        
+        stylePicker.selectRow(0, inComponent: 0, animated: false)
+        
+        previewImage.image = UIImage(named: imageOptions[0])
+        optionSelector(style: 0)
+        
+        for index in 0...2{
+            optionSliders[index]!.isContinuous = false
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+        
+    
+    //function that changes the options based on the selected style
+    func optionSelector(style: Int){
+        if (style == 5){
+            optionSlider2.isEnabled = false;
+            optionSlider3.isEnabled = false;
+        } else if (optionSlider2.isEnabled == false) {
+            optionSlider2.isEnabled = true;
+            optionSlider3.isEnabled = true;
+        }
+        for index in 0...2 {
+            optionLabels[index]?.text = detailOptions[style][index]
+        }
+    }
+    
+    
+    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
     return 1 // number of session
@@ -63,7 +116,10 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    selectedStyle = stylePickerData[row] // selected item
+            selectedStyle = stylePickerData[row] // selected item
+            optionSelector(style: row)
+        previewImage.image = UIImage(named:imageOptions[row])
     }
-    
+
+
 }
