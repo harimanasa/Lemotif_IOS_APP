@@ -64,7 +64,7 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         self.stylePicker.dataSource = self
         
         // Input the data into the array
-        stylePickerData = ["Carpet","Circle","Glass", "Tile", "String","Watercolors"]
+        stylePickerData = ["Carpet","Circle","Glass", "Tile", "String","Watercolor"]
         
         optionLabels = Array(arrayLiteral: optionLabel1, optionLabel2, optionLabel3)
         optionSliders = Array(arrayLiteral: optionSlider1, optionSlider2,optionSlider3)
@@ -97,6 +97,7 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             optionSlider2.isEnabled = true;
             optionSlider3.isEnabled = true;
         }
+        previewImage.image = UIImage(named: imageOptions[style])
         for index in 0...2 {
             optionLabels[index]?.text = detailOptions[style][index]
         }
@@ -121,5 +122,12 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         previewImage.image = UIImage(named:imageOptions[row])
     }
 
-
+    @IBAction func makeCall(_ sender: Any) {
+         JsonHandler.jsonCall_1()
+                while !JsonHandler.callSuccess { }
+            //jsonDataCheck()
+                JsonHandler.jsonCall_decode()
+    }
+    
+    
 }

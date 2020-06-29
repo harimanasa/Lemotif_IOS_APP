@@ -31,7 +31,17 @@ class FirstViewController: UIViewController {
         
         
     }
-
+    /*
+    @IBAction func saveString(_ sender: Any) {
+//        JsonHandler.inputString = [textView1.text!, textView2.text!,textView3.text!]
+//        print(JsonHandler.inputString)
+    }
+    */
+    
+    @IBAction func makeCall(_ sender: Any) {
+        JsonHandler.inputString = [textView1.text!, textView2.text!,textView3.text!]
+        print(JsonHandler.inputString)
+    }
 
 }
 

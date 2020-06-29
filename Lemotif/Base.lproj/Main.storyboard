@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -95,6 +95,7 @@
                                             <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
+                                            <action selector="makeCall:" destination="9pv-A4-QxB" eventType="touchUpInside" id="lgF-Q2-2uE"/>
                                             <segue destination="MSA-Ij-ju1" kind="show" id="gnQ-XT-vTh"/>
                                         </connections>
                                     </button>
@@ -215,6 +216,7 @@
                                         <rect key="frame" x="0.0" y="655" width="374" height="30"/>
                                         <state key="normal" title="Generate Motifs"/>
                                         <connections>
+                                            <action selector="makeCall:" destination="MSA-Ij-ju1" eventType="touchUpInside" id="G1q-X4-g2D"/>
                                             <segue destination="ogK-T0-4sV" kind="show" id="eCN-s9-eQK"/>
                                         </connections>
                                     </button>
@@ -408,9 +410,18 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emotion1" destination="UhG-IG-B6b" id="cAt-i7-Lm1"/>
+                        <outlet property="emotion2" destination="0jZ-nl-ZRZ" id="2fb-J1-96V"/>
+                        <outlet property="emotion3" destination="u5a-3j-uZu" id="8JJ-MF-7qt"/>
+                        <outlet property="label1" destination="xaq-32-u82" id="9UX-Cb-WDn"/>
+                        <outlet property="label2" destination="p3s-Fw-L84" id="5qq-yv-jht"/>
+                        <outlet property="label3" destination="c6j-XL-Eoc" id="IBS-jW-aC6"/>
                         <outlet property="motifImage1" destination="o4J-vk-Hwx" id="iwE-w2-HgM"/>
                         <outlet property="motifImage2" destination="QuO-oE-iJA" id="45V-TS-4Ug"/>
                         <outlet property="motifImage3" destination="Vt6-YR-4CD" id="NbO-iQ-Cuq"/>
+                        <outlet property="topic1" destination="dcq-rQ-85j" id="1ep-RE-RnT"/>
+                        <outlet property="topic2" destination="dHt-xc-1HY" id="HWb-dX-ftQ"/>
+                        <outlet property="topic3" destination="5Pk-xx-gpM" id="vTD-6n-vTs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BV3-E2-wgj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

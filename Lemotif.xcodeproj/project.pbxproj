@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC005FFA24A79AA100D4896A /* ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC005FF924A79AA100D4896A /* ImageHandler.swift */; };
+		FC005FFC24A79BC700D4896A /* JsonHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC005FFB24A79BC700D4896A /* JsonHandler.swift */; };
 		FC2826E92466EB860028EFBE /* motifDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2826E82466EB860028EFBE /* motifDisplayController.swift */; };
 		FC40BE3B2463BE9B00814365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC40BE3A2463BE9B00814365 /* AppDelegate.swift */; };
 		FC40BE3D2463BE9B00814365 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC40BE3C2463BE9B00814365 /* SceneDelegate.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC005FF924A79AA100D4896A /* ImageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHandler.swift; sourceTree = "<group>"; };
+		FC005FFB24A79BC700D4896A /* JsonHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHandler.swift; sourceTree = "<group>"; };
 		FC2826E82466EB860028EFBE /* motifDisplayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = motifDisplayController.swift; sourceTree = "<group>"; };
 		FC40BE372463BE9B00814365 /* Lemotif.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lemotif.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC40BE3A2463BE9B00814365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,8 +120,10 @@
 				FC40BE472463BEA200814365 /* LaunchScreen.storyboard */,
 				FC40BE4A2463BEA200814365 /* Info.plist */,
 				FC40BE6C2463E1E500814365 /* UITextViewPlaceholder.swift */,
+				FC005FF924A79AA100D4896A /* ImageHandler.swift */,
 				FC40BE722464384600814365 /* StyleViewController.swift */,
 				FC2826E82466EB860028EFBE /* motifDisplayController.swift */,
+				FC005FFB24A79BC700D4896A /* JsonHandler.swift */,
 			);
 			path = Lemotif;
 			sourceTree = "<group>";
@@ -272,11 +278,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC40BE732464384600814365 /* StyleViewController.swift in Sources */,
+				FC005FFC24A79BC700D4896A /* JsonHandler.swift in Sources */,
 				FC40BE412463BE9B00814365 /* SecondViewController.swift in Sources */,
 				FC40BE6D2463E1E500814365 /* UITextViewPlaceholder.swift in Sources */,
 				FC40BE3F2463BE9B00814365 /* FirstViewController.swift in Sources */,
 				FC40BE3B2463BE9B00814365 /* AppDelegate.swift in Sources */,
 				FC2826E92466EB860028EFBE /* motifDisplayController.swift in Sources */,
+				FC005FFA24A79AA100D4896A /* ImageHandler.swift in Sources */,
 				FC40BE3D2463BE9B00814365 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
