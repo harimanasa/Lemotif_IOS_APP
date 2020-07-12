@@ -18,7 +18,8 @@ class JsonHandler {
      static var callSuccess = false
     static var topicList : [String] = [""]
     static var emotionList : [String] = [""]
-
+    static var style = "watercolors";
+    static var args = ["intensity_sd" : 0.8];
     
     static func jsonCall_decode(){
            print("inside jsonCall_decode")
@@ -97,7 +98,10 @@ class JsonHandler {
         
         //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
 
-        let parameters :[String: Any] = ["key": "49s0Jo67L08sabgCph7lw", "text": JsonHandler.inputString]
+        let parameters :[String: Any] = ["key": "49s0Jo67L08sabgCph7lw", "text": JsonHandler.inputString, "args" : JsonHandler.args]
+        //TODO: possibly add "algorithms" = style; and "args" = {width: 0.7, height: 0.4} or something like this.
+        
+        
 
         //create the url with URL
         let url = URL(string: "http://lemotif.cloudcv.org/api/v0.0/create")! //change the url
@@ -159,4 +163,10 @@ class JsonHandler {
                 task.resume()
     }
 
+    
+    @IBAction func makeCall(_ sender: Any) {
+        JsonHandler.callSuccess = false;
+        ImageHandler.callReady = false;
+    }
+    
 }

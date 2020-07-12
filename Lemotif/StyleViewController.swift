@@ -43,9 +43,15 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     var selectedStyle: String = ""
     
-    var imageOptions: [String] = ["Carpet","Circle","Glass", "Tile", "String","WaterColor"]
-    
-    
+    var imageOptions: [String] = ["carpet","circle","glass", "tile", "string","watercolor"]
+    var watercolorOp = ["intensity_sd" : 0.2];
+    var carpetOp = ["tile_ratio" : 0.1, "line_width": 1, "rotations" : 4]
+    var tileOp = ["line_width_tile" : 1, "step_size" : 10, "dir_prob" : 0.5]
+    var glassOp = ["icon_ratio" : 0.1, "size_flux" : 0.25, "passes" : 10]
+    var stringOp = ["offset_sd" : 0.2,  "n_line" : 150, "line_width_string" : 5]
+    var circleOp = ["min_rad_factor" : 0.01, "max_rad_factor" : 0.09,
+                    "n_circles" : 100]
+    var opList : [Dictionary<String, Double>] = []
 //    @IBAction func newSelection(_ sender: Any) {
 //        var row = stylePicker.selectedRow(inComponent: 0)
 //        optionSelector(style: row)
@@ -58,13 +64,14 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        var list =  [carpetOp, circleOp, tileOp, glassOp, stringOp,watercolorOp]
+        opList = list
         // Connect data:
         self.stylePicker.delegate = self
         self.stylePicker.dataSource = self
         
         // Input the data into the array
-        stylePickerData = ["Carpet","Circle","Glass", "Tile", "String","Watercolor"]
+        stylePickerData = ["carpet","circle","glass", "tile", "string","watercolor"]
         
         optionLabels = Array(arrayLiteral: optionLabel1, optionLabel2, optionLabel3)
         optionSliders = Array(arrayLiteral: optionSlider1, optionSlider2,optionSlider3)
@@ -118,6 +125,8 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
             selectedStyle = stylePickerData[row] // selected item
+            //JsonHandler.style = stylePickerData[row];
+            //JsonHandler.args = opList[row];
             optionSelector(style: row)
         previewImage.image = UIImage(named:imageOptions[row])
     }
@@ -129,5 +138,8 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 JsonHandler.jsonCall_decode()
     }
     
+    
+    
+    //TODO: enable customizing arg parameter
     
 }

@@ -39,8 +39,27 @@ class FirstViewController: UIViewController {
     */
     
     @IBAction func makeCall(_ sender: Any) {
+        
+        
+        
         JsonHandler.inputString = [textView1.text!, textView2.text!,textView3.text!]
+        for i in 0...2 {
+            if (JsonHandler.inputString[i] == ""){
+                JsonHandler.inputString[i] = " ";
+            }
+        }
         print(JsonHandler.inputString)
+    }
+
+    @IBAction func unwindToMain(_sender : UIStoryboardSegue){
+        JsonHandler.callSuccess = false;
+        ImageHandler.callReady = false;
+        ImageHandler.motifImageList = [];
+        ImageHandler.motifString = [];
+        textView1.text = "";
+        textView2.text = "";
+        textView3.text = "";
+
     }
 
 }
