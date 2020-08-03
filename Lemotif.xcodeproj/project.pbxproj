@@ -21,6 +21,10 @@
 		FC40BE5F2463BEA200814365 /* LemotifUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC40BE5E2463BEA200814365 /* LemotifUITests.swift */; };
 		FC40BE6D2463E1E500814365 /* UITextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC40BE6C2463E1E500814365 /* UITextViewPlaceholder.swift */; };
 		FC40BE732464384600814365 /* StyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC40BE722464384600814365 /* StyleViewController.swift */; };
+		FCB26E0324D7BF0500B76568 /* MotifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB26E0224D7BF0500B76568 /* MotifCell.swift */; };
+		FCB26E0524D7C04300B76568 /* MotifData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB26E0424D7C04300B76568 /* MotifData.swift */; };
+		FCB26E0924D7CABF00B76568 /* TableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB26E0824D7CABF00B76568 /* TableManager.swift */; };
+		FCB26E0B24D8289A00B76568 /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB26E0A24D8289A00B76568 /* EntryDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,10 @@
 		FC40BE602463BEA200814365 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC40BE6C2463E1E500814365 /* UITextViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholder.swift; sourceTree = "<group>"; };
 		FC40BE722464384600814365 /* StyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleViewController.swift; sourceTree = "<group>"; };
+		FCB26E0224D7BF0500B76568 /* MotifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotifCell.swift; sourceTree = "<group>"; };
+		FCB26E0424D7C04300B76568 /* MotifData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotifData.swift; sourceTree = "<group>"; };
+		FCB26E0824D7CABF00B76568 /* TableManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableManager.swift; sourceTree = "<group>"; };
+		FCB26E0A24D8289A00B76568 /* EntryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +132,10 @@
 				FC40BE722464384600814365 /* StyleViewController.swift */,
 				FC2826E82466EB860028EFBE /* motifDisplayController.swift */,
 				FC005FFB24A79BC700D4896A /* JsonHandler.swift */,
+				FCB26E0224D7BF0500B76568 /* MotifCell.swift */,
+				FCB26E0424D7C04300B76568 /* MotifData.swift */,
+				FCB26E0824D7CABF00B76568 /* TableManager.swift */,
+				FCB26E0A24D8289A00B76568 /* EntryDetailViewController.swift */,
 			);
 			path = Lemotif;
 			sourceTree = "<group>";
@@ -278,12 +290,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC40BE732464384600814365 /* StyleViewController.swift in Sources */,
+				FCB26E0524D7C04300B76568 /* MotifData.swift in Sources */,
 				FC005FFC24A79BC700D4896A /* JsonHandler.swift in Sources */,
+				FCB26E0B24D8289A00B76568 /* EntryDetailViewController.swift in Sources */,
 				FC40BE412463BE9B00814365 /* SecondViewController.swift in Sources */,
 				FC40BE6D2463E1E500814365 /* UITextViewPlaceholder.swift in Sources */,
 				FC40BE3F2463BE9B00814365 /* FirstViewController.swift in Sources */,
 				FC40BE3B2463BE9B00814365 /* AppDelegate.swift in Sources */,
 				FC2826E92466EB860028EFBE /* motifDisplayController.swift in Sources */,
+				FCB26E0924D7CABF00B76568 /* TableManager.swift in Sources */,
+				FCB26E0324D7BF0500B76568 /* MotifCell.swift in Sources */,
 				FC005FFA24A79AA100D4896A /* ImageHandler.swift in Sources */,
 				FC40BE3D2463BE9B00814365 /* SceneDelegate.swift in Sources */,
 			);

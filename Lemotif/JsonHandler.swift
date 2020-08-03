@@ -19,7 +19,7 @@ class JsonHandler {
     static var topicList : [String] = [""]
     static var emotionList : [String] = [""]
     static var style = "watercolors";
-    static var args = ["intensity_sd" : 0.8];
+    static var args : [String: Any] = ["algorithm" : "watercolors", "intensity_sd" : 0.8];
     
     static func jsonCall_decode(){
            print("inside jsonCall_decode")

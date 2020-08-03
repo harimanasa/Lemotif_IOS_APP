@@ -40,24 +40,85 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     @IBOutlet weak var previewImage: UIImageView!
     
-    
     var selectedStyle: String = ""
+    var selectedIndex = 0
     
     var imageOptions: [String] = ["carpet","circle","glass", "tile", "string","watercolor"]
-    var watercolorOp = ["intensity_sd" : 0.2];
-    var carpetOp = ["tile_ratio" : 0.1, "line_width": 1, "rotations" : 4]
-    var tileOp = ["line_width_tile" : 1, "step_size" : 10, "dir_prob" : 0.5]
-    var glassOp = ["icon_ratio" : 0.1, "size_flux" : 0.25, "passes" : 10]
-    var stringOp = ["offset_sd" : 0.2,  "n_line" : 150, "line_width_string" : 5]
-    var circleOp = ["min_rad_factor" : 0.01, "max_rad_factor" : 0.09,
+    var watercolorOp: [String: Any] = ["algorithm" : "watercolors", "intensity_sd" : 0.2];
+    //var watercolorOp: [String: Any] = ["algorithm" : "watercolors"]
+    var carpetOp  :[String: Any] = ["algorithm" : "carpet", "tile_ratio" : 0.1, "line_width": 1, "rotations" : 4]
+    var tileOp : [String: Any] = ["algorithm" : "tile", "line_width_tile" : 1, "step_size" : 10, "dir_prob" : 0.5]
+    var glassOp: [String: Any]  = ["algorithm" : "glass", "icon_ratio" : 0.1, "size_flux" : 0.25, "passes" : 10]
+    var stringOp : [String: Any] = ["algorithm" : "string", "offset_sd" : 0.2,  "n_line" : 150, "line_width_string" : 5]
+    var circleOp : [String: Any] = ["algorithm" : "circle", "min_rad_factor" : 0.01, "max_rad_factor" : 0.09,
                     "n_circles" : 100]
-    var opList : [Dictionary<String, Double>] = []
-//    @IBAction func newSelection(_ sender: Any) {
-//        var row = stylePicker.selectedRow(inComponent: 0)
-//        optionSelector(style: row)
-//        print(row)
-//
-//    }
+    var opList : [Dictionary<String, Any>] = []
+    
+    func getArgs() {
+        switch selectedIndex{
+        case 0:
+            carpetArgs()
+            break;
+        case 1:
+            circleArgs()
+            break;
+        case 2:
+            glassArgs()
+            break;
+        case 3:
+            tileArgs()
+            break;
+        case 4:
+            stringArgs()
+            break;
+        default :
+            watercolorArgs()
+            break;
+        }
+    }
+    
+    func watercolorArgs() {
+        watercolorOp["intensity_sd"]! =  Float (optionSlider1.value);
+        JsonHandler.args = watercolorOp
+    }
+    func carpetArgs() {
+        carpetOp["tile_ratio"] = optionSlider1.value
+        carpetOp["line_width"] = Int(optionSlider2.value * 9)+1 ;
+        carpetOp["rotations"] = Int(optionSlider3.value * 5) + 1;
+        JsonHandler.args = carpetOp;
+
+    }
+    
+    func tileArgs() {
+        tileOp["line_width_tile"] = Int(optionSlider3.value * 9) + 1
+        tileOp["step_size"] = Int(optionSlider2.value * 45) + 5
+        tileOp["dir_prob"] = ((optionSlider1.value * 80) + 10)/100
+        JsonHandler.args = tileOp
+    }
+    
+    func glassArgs(){
+        glassOp["icon_ratio"] = optionSlider1.value
+        glassOp["size_flux"] = optionSlider2.value
+        glassOp["passes"] = Int(optionSlider3.value * 19) + 1
+        JsonHandler.args = glassOp
+        
+    }
+    
+    func stringArgs() {
+        stringOp["offset_sd"] = optionSlider1.value
+        stringOp["n_line"] = Int(optionSlider2.value * 225) + 25
+        stringOp["line_width_string"] = Int(optionSlider3.value) * 9 + 1
+        JsonHandler.args = stringOp
+    }
+    
+    func circleArgs() {
+        var circleOp : [String: Any] = ["algorithm" : "circle", "min_rad_factor" : 0.01, "max_rad_factor" : 0.09,
+                               "n_circles" : 100]
+        circleOp["n_circles"] = Int(optionSlider1.value * 140) + 10;
+        circleOp["min_rad_factor"] = optionSlider2.value / 10
+        circleOp["max_rad_factor"] = optionSlider3.value / 10
+        JsonHandler.args = circleOp
+    }
     
     
     
@@ -84,6 +145,8 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         for index in 0...2{
             optionSliders[index]!.isContinuous = false
         }
+        
+        JsonHandler.args = carpetOp;
     }
     
     override func didReceiveMemoryWarning() {
@@ -125,13 +188,15 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
             selectedStyle = stylePickerData[row] // selected item
+            selectedIndex = row
             //JsonHandler.style = stylePickerData[row];
-            //JsonHandler.args = opList[row];
+            JsonHandler.args = opList[row];
             optionSelector(style: row)
         previewImage.image = UIImage(named:imageOptions[row])
     }
 
     @IBAction func makeCall(_ sender: Any) {
+        getArgs()
          JsonHandler.jsonCall_1()
                 while !JsonHandler.callSuccess { }
             //jsonDataCheck()
