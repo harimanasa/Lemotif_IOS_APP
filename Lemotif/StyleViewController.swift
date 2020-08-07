@@ -43,7 +43,7 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     var selectedStyle: String = ""
     var selectedIndex = 0
     
-    var imageOptions: [String] = ["carpet","circle","glass", "tile", "string","watercolor"]
+    var imageOptions: [String] = ["carpet","circle","glass", "tile", "string","watercolors"]
     var watercolorOp: [String: Any] = ["algorithm" : "watercolors", "intensity_sd" : 0.2];
     //var watercolorOp: [String: Any] = ["algorithm" : "watercolors"]
     var carpetOp  :[String: Any] = ["algorithm" : "carpet", "tile_ratio" : 0.1, "line_width": 1, "rotations" : 4]
