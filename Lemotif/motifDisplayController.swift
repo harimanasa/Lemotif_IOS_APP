@@ -68,29 +68,31 @@ class motifDisplayController: UIViewController {
                
     }
 
-
+//for rewinding. Do NOT DELETE
     @IBAction func makeCall(_ sender: Any) {
         
     }
     
     @IBAction func saveMotif(_ sender: Any) {
-        print("saving")
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd - MM - yyyy"
         let result = formatter.string(from: date)
-
-        
         if (!TableManager.newInstanceReady) {
             var newSave = MotifData(image1: ImageHandler.motifImageList[0],image2: ImageHandler.motifImageList[1],image3: ImageHandler.motifImageList[2], date: result,emotions: JsonHandler.emotionList, topics: JsonHandler.topicList)
             TableManager.addNewItem(toSave: newSave)
             print("\n\n\(newSave.emotionList)\n\n")
-
         }
-                
-
+        DispatchQueue.main.async {
+            self.save()
+        }
     }
     
-    
-   
+    func save() {
+     var tempList = TableManager.motifDataList
+     var tempList2 = (tempList as NSObject)
+     let encodedData = try? NSKeyedArchiver.archivedData(withRootObject: tempList, requiringSecureCoding: false)
+    UserDefaults.standard.setValue(encodedData, forKey: "motifDataList")
+    }
+
 }

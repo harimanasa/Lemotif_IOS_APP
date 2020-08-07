@@ -22,13 +22,10 @@ class JsonHandler {
     static var args : [String: Any] = ["algorithm" : "watercolors", "intensity_sd" : 0.8];
     
     static func jsonCall_decode(){
-           print("inside jsonCall_decode")
            var motifDictionary = convertToDictionary(text: receivedDataString!)
            
            
-           //second Dictionary -- refined
            var motifDictionary_2 = ["topics": [""], "emotions" : [""]]
-           //var motifImageList: [UIImage] = Array()
            
            
            //Create a temp array with topic list
@@ -60,20 +57,10 @@ class JsonHandler {
            motifDictionary_2["emotions"] = itemArray
         emotionList = itemArray
 
-//           text1.text = motifDictionary_2["topics"]![0] + "   " + motifDictionary_2["emotions"]![0]
-//           text2.text = motifDictionary_2["topics"]![1] + "   " + motifDictionary_2["emotions"]![1]
-//           text3.text = motifDictionary_2["topics"]![2] + "   " + motifDictionary_2["emotions"]![2]
 
            for motifval in motifDictionary?["motifs"] as! Array<String> {
                ImageHandler.motifString.append(motifval)
-//               let newImage = toImage(inputString: motifval)
-//               if newImage != nil {
-//                   motifImageList.append(newImage!)
-//                   ImageHandler.motifImageList.append(newImage!)
-//                    print("success! -- added to the list")
-//               } else {
-//                  print("error with decodedData")
-//              }
+
            }
            ImageHandler.callReady = true
     
@@ -99,7 +86,6 @@ class JsonHandler {
         //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
 
         let parameters :[String: Any] = ["key": "49s0Jo67L08sabgCph7lw", "text": JsonHandler.inputString, "args" : JsonHandler.args]
-        //TODO: possibly add "algorithms" = style; and "args" = {width: 0.7, height: 0.4} or something like this.
         
         
 
@@ -148,9 +134,7 @@ class JsonHandler {
                                 print(httpresponse.statusCode)
                             }
                             if let dataString = String(data: data, encoding: .utf8) {
-                                //print("Response data string:\n \(dataString)")
                                 self.receivedDataString = dataString
-                                //self.jsonCall_decode()
                                 self.callSuccess = true
                             }
                             

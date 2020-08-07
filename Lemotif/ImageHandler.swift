@@ -23,13 +23,10 @@ class ImageHandler {
              let base64 = inputString.components(separatedBy: ",")
              todecode = base64[1]
          }
-        print("\n\n trying to convert the string to png -- inside toImage function")
         let decodedData = Data(base64Encoded: todecode, options: [])
          if decodedData != nil{
-             print("success!! returning u=UIImage")
              return UIImage(data: decodedData!)
          } else {
-             print("failure....")
              return nil
          }
                     

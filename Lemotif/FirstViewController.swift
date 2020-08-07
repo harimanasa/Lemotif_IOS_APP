@@ -16,11 +16,9 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var textView3: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
         let promptText: String? = "Write a little about something that happened today and how you felt."
-//        textView3.placeholder = promptText
-//        textView2.placeholder = promptText
-//        textView1.placeholder = promptText
         
         let listTextviews: Array<UITextView?> = Array(arrayLiteral: textView1,textView2, textView3)
         for currTV in listTextviews {
@@ -28,15 +26,21 @@ class FirstViewController: UIViewController {
             currTV?.layer.borderWidth = 1
             currTV?.layer.borderColor = UIColor.black.cgColor
         }
+        DispatchQueue.main.async {
+            self.retrieve()
+        }
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+           view.addGestureRecognizer(tap)
+        
+        
         
         
     }
-    /*
-    @IBAction func saveString(_ sender: Any) {
-//        JsonHandler.inputString = [textView1.text!, textView2.text!,textView3.text!]
-//        print(JsonHandler.inputString)
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
-    */
     
     @IBAction func makeCall(_ sender: Any) {
         
@@ -60,6 +64,32 @@ class FirstViewController: UIViewController {
         textView2.text = "";
         textView3.text = "";
 
+    }
+
+    
+    func retrieve() {
+        guard let decoded  = UserDefaults.standard.object(forKey: "motifDataList") else {
+            print("decoded is nil")
+            return
+        }
+        guard let data = NSKeyedUnarchiver.unarchiveObject(with: (decoded as! NSObject) as! Data)  else {
+            print("data is nil")
+            return
+        }
+        if (data as! [MotifData]).count < 1 {
+            return
+        }
+        TableManager.motifDataList = data as! [MotifData]
+        
+        UserDefaults.standard.synchronize()
+
+
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.retrieve()
+
+        }
     }
 
 }

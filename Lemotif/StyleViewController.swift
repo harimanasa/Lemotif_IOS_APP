@@ -189,7 +189,6 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
             selectedStyle = stylePickerData[row] // selected item
             selectedIndex = row
-            //JsonHandler.style = stylePickerData[row];
             JsonHandler.args = opList[row];
             optionSelector(style: row)
         previewImage.image = UIImage(named:imageOptions[row])
@@ -199,12 +198,10 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         getArgs()
          JsonHandler.jsonCall_1()
                 while !JsonHandler.callSuccess { }
-            //jsonDataCheck()
                 JsonHandler.jsonCall_decode()
     }
     
     
     
-    //TODO: enable customizing arg parameter
     
 }

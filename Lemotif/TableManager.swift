@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class TableManager: NSObject, NSCoding{
+class TableManager: NSObject, NSCoding, Codable {
     func encode(with coder: NSCoder) {
         coder.encode(TableManager.motifDataList, forKey: "motifDataList")
     }
@@ -20,21 +20,26 @@ class TableManager: NSObject, NSCoding{
         }
     }
 
+    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("saveData")
     
-    
-    static var motifDataList: [MotifData] = []
+    static var motifDataList: [MotifData] = [MotifData(image1:UIImage(named: "watercolors")!,image2:UIImage(named: "glass")!,image3:UIImage(named: "tile")!, date: "sample", emotions: ["happy","fun","tired"], topics:["day", "friends","family"])]
     static var isNewSave: Bool = false
     static var newInstanceReady: Bool = false
     static var selectedIndex = -1
+    static var valUpdate = false
+    
     static func addNewItem(toSave :MotifData){
         if (motifDataList.count >= 1 &&   motifDataList[motifDataList.count - 1].date == (toSave.date)) {
-           // print("update")
+           print("update")
+            valUpdate = true
             motifDataList[motifDataList.count - 1] = toSave
-            //print("\(motifDataList[motifDataList.count - 1].emotionList)")
+            print("\(motifDataList[motifDataList.count - 1].emotionList)")
         } else {
-           // print("add")
+            valUpdate = false
             motifDataList.append(toSave)
         }
+
         
         isNewSave = true
         newInstanceReady = true

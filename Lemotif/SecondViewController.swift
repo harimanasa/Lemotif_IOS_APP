@@ -14,15 +14,7 @@ class SecondViewController: UIViewController {
     
     //var motifDataList: [MotifData] = []
     override func viewDidLoad() {
-        print("viewDidLoad Called")
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        //TableManager.motifDataList = createArray()
-
-        //TableManager.motifDataList = userDefault.value(forKey: "motifDataList") as? [MotifData] ?? createArray()
-      
-        
-        
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -37,22 +29,9 @@ class SecondViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         print("videDidAppear")
         super.viewDidAppear(animated)
-        if(TableManager.isNewSave){
-            print("updating the table: \(TableManager.motifDataList)")
-            tableView.beginUpdates()
-            if (TableManager.motifDataList.count > 1){
-                tableView.insertRows(at: [IndexPath(row:0, section: 0)], with: .automatic)
-
-            }
-            TableManager.isNewSave = false
-            TableManager.newInstanceReady = false
-
-            tableView.endUpdates()
-
-        }
-                
+        tableView.reloadData()
         
-        //self.tabBarController?.delegate = self
+        
     }
 
 }
@@ -66,8 +45,9 @@ extension SecondViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //actually configure the cell
         let item = TableManager.motifDataList[TableManager.motifDataList.count - 1 - indexPath.row] // whatever item is at the row
+        print("called")
         let cell = tableView.dequeueReusableCell(withIdentifier: "MotifCell") as! MotifCell
-        cell.setMotif(motifData: item)
+        cell.setMotif(motifData: item as! MotifData)
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
