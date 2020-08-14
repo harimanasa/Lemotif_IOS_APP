@@ -23,7 +23,7 @@ class TableManager: NSObject, NSCoding, Codable {
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("saveData")
     
-    static var motifDataList: [MotifData] = [MotifData(image1:UIImage(named: "watercolors")!,image2:UIImage(named: "glass")!,image3:UIImage(named: "tile")!, date: "sample", emotions: ["happy","fun","tired"], topics:["day", "friends","family"])]
+    static var motifDataList: [MotifData] = [MotifData(image1:UIImage(named: "SampleMotif1")!,image2:UIImage(named: "SampleMotif2")!,image3:UIImage(named: "SampleMotif3")!, date: "sample", emotions: ["happy","fun","tired"], topics:["day", "friends","family"])]
     static var isNewSave: Bool = false
     static var newInstanceReady: Bool = false
     static var selectedIndex = -1

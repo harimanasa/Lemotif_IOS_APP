@@ -21,9 +21,11 @@ class JsonHandler {
     static var style = "watercolors";
     static var args : [String: Any] = ["algorithm" : "watercolors", "intensity_sd" : 0.8];
     
-    static func jsonCall_decode(){
+    static func jsonCall_decode()->Bool{
            var motifDictionary = convertToDictionary(text: receivedDataString!)
-           
+            if (receivedDataString!.contains("error")){
+            return false
+            }
            
            var motifDictionary_2 = ["topics": [""], "emotions" : [""]]
            
@@ -63,6 +65,7 @@ class JsonHandler {
 
            }
            ImageHandler.callReady = true
+        return true
     
        }
     
@@ -84,7 +87,6 @@ class JsonHandler {
     static func jsonCall_1(){
         
         //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
-
         let parameters :[String: Any] = ["key": "49s0Jo67L08sabgCph7lw", "text": JsonHandler.inputString, "args" : JsonHandler.args]
         
         

@@ -34,6 +34,16 @@ extension UITextView: UITextViewDelegate {
         }
     }
     
+    public func textViewDidBeginEditing(_ textView: UITextView) {
+        FirstViewController.timeToShow = true
+        var currName = self.accessibilityIdentifier
+        
+        if currName == "Last" {
+            FirstViewController.isLast = true
+            print("last!!")
+        }
+    }
+    
     /// The UITextView placeholder text
     public var placeholder: String? {
         get {

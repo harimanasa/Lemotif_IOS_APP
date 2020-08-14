@@ -14,9 +14,25 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var textView2: UITextView!
     
     @IBOutlet weak var textView3: UITextView!
+    
+    
+    @IBOutlet weak var stackView: UIStackView!
+    
+    @IBOutlet weak var firstEntry: UIStackView!
+    @IBOutlet weak var secondEntry: UIStackView!
+    @IBOutlet weak var lastEntry: UIStackView!
+    
+    static var isLast = false
+    var currTap : CGFloat = 0
+    static var timeToShow = false
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
         // Do any additional setup after loading the view.
         let promptText: String? = "Write a little about something that happened today and how you felt."
         
@@ -30,26 +46,63 @@ class FirstViewController: UIViewController {
             self.retrieve()
         }
         
+        //Dismisses keyboard when the view is touched.
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-           view.addGestureRecognizer(tap)
+        let tap2 = UITapGestureRecognizer(target: self, action: "isLastEntry")
+
+
+        self.view.addGestureRecognizer(tap)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        
+
      
         
     }
+
+    
+    
+   @objc func isLastEntry() {
+    print("isLastEntry")
+    }
         
+    @objc func keyboardWillShow(notification: NSNotification) {
+        while(!FirstViewController.timeToShow) {}
+        print("\(FirstViewController.isLast) in keyboard will show")
+
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if  FirstViewController.isLast && self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+
+        print("\(FirstViewController.isLast)")
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+        FirstViewController.timeToShow = false
+
+    }
     
-    
-    
-    
+
+  
     
     @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        FirstViewController.isLast = false
+        print("\(FirstViewController.isLast) in dismissKeyboard")
+
         view.endEditing(true)
     }
     
     @IBAction func makeCall(_ sender: Any) {
-        
+        textView3.endEditing(true)
+        self.view.endEditing(true)
         
         
         JsonHandler.inputString = [textView1.text!, textView2.text!,textView3.text!]
@@ -92,6 +145,8 @@ class FirstViewController: UIViewController {
 
     }
     override func viewDidAppear(_ animated: Bool) {
+        self.textView3.endEditing(true)
+        print("appearrr")
         DispatchQueue.main.async {
             self.retrieve()
 
@@ -100,5 +155,16 @@ class FirstViewController: UIViewController {
 
     
     
+    
 }
 
+
+extension FirstViewController: UIGestureRecognizerDelegate {
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
+    }
+
+
+
+}

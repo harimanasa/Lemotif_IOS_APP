@@ -48,7 +48,7 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     //var watercolorOp: [String: Any] = ["algorithm" : "watercolors"]
     var carpetOp  :[String: Any] = ["algorithm" : "carpet", "tile_ratio" : 0.1, "line_width": 1, "rotations" : 4]
     var tileOp : [String: Any] = ["algorithm" : "tile", "line_width_tile" : 1, "step_size" : 10, "dir_prob" : 0.5]
-    var glassOp: [String: Any]  = ["algorithm" : "glass", "icon_ratio" : 0.1, "size_flux" : 0.25, "passes" : 10]
+    var glassOp: [String: Any]  = ["algorithm" : "glass", "icon_ratio" : 0.1, "size_flux" : 0.33, "passes" : 5]
     var stringOp : [String: Any] = ["algorithm" : "string", "offset_sd" : 0.2,  "n_line" : 150, "line_width_string" : 5]
     var circleOp : [String: Any] = ["algorithm" : "circle", "min_rad_factor" : 0.01, "max_rad_factor" : 0.09,
                     "n_circles" : 100]
@@ -97,9 +97,12 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     func glassArgs(){
-        glassOp["icon_ratio"] = optionSlider1.value
-        glassOp["size_flux"] = optionSlider2.value
-        glassOp["passes"] = Int(optionSlider3.value * 19) + 1
+        glassOp["icon_ratio"] = optionSlider1.value / 10 + 0.1
+        glassOp["size_flux"] = optionSlider2.value / 10 + 0.33
+        glassOp["passes"] = Int(optionSlider3.value * 5) + 1 + 5
+//        glassOp["icon_ratio"] = 0.1
+//        glassOp["size_flux"] = 0.33
+//        glassOp["passes"] = 5
         JsonHandler.args = glassOp
         
     }
@@ -124,6 +127,8 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        FirstViewController.isLast = false
+        FirstViewController.timeToShow = false
         // Do any additional setup after loading the view, typically from a nib.
         var list =  [carpetOp, circleOp, tileOp, glassOp, stringOp,watercolorOp]
         opList = list
@@ -132,7 +137,7 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         self.stylePicker.dataSource = self
         
         // Input the data into the array
-        stylePickerData = ["carpet","circle","glass", "tile", "string","watercolor"]
+        stylePickerData = ["carpet","circle","glass", "tile", "string","watercolors"]
         
         optionLabels = Array(arrayLiteral: optionLabel1, optionLabel2, optionLabel3)
         optionSliders = Array(arrayLiteral: optionSlider1, optionSlider2,optionSlider3)
@@ -198,7 +203,9 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         getArgs()
          JsonHandler.jsonCall_1()
                 while !JsonHandler.callSuccess { }
-                JsonHandler.jsonCall_decode()
+        if (!JsonHandler.jsonCall_decode()) {
+            print("failed...")
+        }
     }
     
     
