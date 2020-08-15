@@ -40,7 +40,6 @@ extension UITextView: UITextViewDelegate {
         
         if currName == "Last" {
             FirstViewController.isLast = true
-            print("last!!")
         }
     }
     

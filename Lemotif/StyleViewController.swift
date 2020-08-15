@@ -15,8 +15,8 @@ class StyleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     var stylePickerData: [String] = [String]()
     
     var detailOptions: [[String]] = [
-        ["Grid size as percentage of motif size", "Line angle intervals", "Line Widths"],
-        ["Number of Circles","Min circle radius as percentage of motif size","Max circle radius as percentage of motif size"],
+        ["Grid size ", "Line angle intervals", "Line Widths"],
+        ["Number of Circles","Min circle radius ","Max circle radius"],
         ["Icon size as percentage of motif size", "Icon size variability","Icon fill Density"],
         ["Angle rotation", "Grid size", "Line widths"],
         ["Amount of bend in string", "Number of strings", "String widths"],

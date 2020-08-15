@@ -38,9 +38,6 @@ class motifDisplayController: UIViewController {
         var emotionTexts = [emotion1, self.emotion2, self.emotion3]
         
         
-        print(JsonHandler.topicList)
-        print(JsonHandler.emotionList)
-
         while (!ImageHandler.callReady) {}
             
                    for i in 0...2 {
@@ -51,11 +48,7 @@ class motifDisplayController: UIViewController {
                     }
                        var temp = ImageHandler.toImage(inputString: ImageHandler.motifString[i])
                        ImageHandler.motifImageList.append(temp!)
-                       if ImageHandler.motifImageList[i] != nil {
-                             print("success! -- added to the list")
-                        } else {
-                           print("error with decodedData")
-                       }
+                       
                    }
 
                do{
@@ -81,7 +74,6 @@ class motifDisplayController: UIViewController {
         if (!TableManager.newInstanceReady) {
             var newSave = MotifData(image1: ImageHandler.motifImageList[0],image2: ImageHandler.motifImageList[1],image3: ImageHandler.motifImageList[2], date: result,emotions: JsonHandler.emotionList, topics: JsonHandler.topicList)
             TableManager.addNewItem(toSave: newSave)
-            print("\n\n\(newSave.emotionList)\n\n")
         }
         DispatchQueue.main.async {
             self.save()

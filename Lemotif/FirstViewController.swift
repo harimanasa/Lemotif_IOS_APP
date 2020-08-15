@@ -65,12 +65,10 @@ class FirstViewController: UIViewController {
     
     
    @objc func isLastEntry() {
-    print("isLastEntry")
     }
         
     @objc func keyboardWillShow(notification: NSNotification) {
         while(!FirstViewController.timeToShow) {}
-        print("\(FirstViewController.isLast) in keyboard will show")
 
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if  FirstViewController.isLast && self.view.frame.origin.y == 0 {
@@ -81,7 +79,6 @@ class FirstViewController: UIViewController {
 
     @objc func keyboardWillHide(notification: NSNotification) {
 
-        print("\(FirstViewController.isLast)")
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
         }
@@ -95,7 +92,6 @@ class FirstViewController: UIViewController {
     @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         FirstViewController.isLast = false
-        print("\(FirstViewController.isLast) in dismissKeyboard")
 
         view.endEditing(true)
     }
@@ -111,7 +107,6 @@ class FirstViewController: UIViewController {
                 JsonHandler.inputString[i] = " ";
             }
         }
-        print(JsonHandler.inputString)
     }
 
     @IBAction func unwindToMain(_sender : UIStoryboardSegue){
@@ -128,11 +123,9 @@ class FirstViewController: UIViewController {
     
     func retrieve() {
         guard let decoded  = UserDefaults.standard.object(forKey: "motifDataList") else {
-            print("decoded is nil")
             return
         }
         guard let data = NSKeyedUnarchiver.unarchiveObject(with: (decoded as! NSObject) as! Data)  else {
-            print("data is nil")
             return
         }
         if (data as! [MotifData]).count < 1 {
@@ -146,7 +139,6 @@ class FirstViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         self.textView3.endEditing(true)
-        print("appearrr")
         DispatchQueue.main.async {
             self.retrieve()
 

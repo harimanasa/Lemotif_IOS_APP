@@ -639,11 +639,11 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--First-->
+        <!--Today's Journal-->
         <scene sceneID="SI5-Ep-ri3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hTA-x2-sS1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Today's Journal" image="first" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="brV-Vq-EBd">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -658,11 +658,11 @@
             </objects>
             <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
         </scene>
-        <!--Second-->
+        <!--Diary-->
         <scene sceneID="KHL-rF-F6S">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eGL-5x-HAb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Diary" image="second" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iJf-Ss-bOi">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

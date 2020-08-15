@@ -27,7 +27,6 @@ class SecondViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("videDidAppear")
         super.viewDidAppear(animated)
         tableView.reloadData()
         
@@ -45,14 +44,12 @@ extension SecondViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //actually configure the cell
         let item = TableManager.motifDataList[TableManager.motifDataList.count - 1 - indexPath.row] // whatever item is at the row
-        print("called")
         let cell = tableView.dequeueReusableCell(withIdentifier: "MotifCell") as! MotifCell
         cell.setMotif(motifData: item as! MotifData)
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         TableManager.selectedIndex = indexPath.row
-        print("row: \(TableManager.selectedIndex)")
 
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "showEntry", sender: self)
