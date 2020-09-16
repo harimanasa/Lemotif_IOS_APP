@@ -31,10 +31,8 @@ class TableManager: NSObject, NSCoding, Codable {
     
     static func addNewItem(toSave :MotifData){
         if (motifDataList.count >= 1 &&   motifDataList[motifDataList.count - 1].date == (toSave.date)) {
-           print("update")
             valUpdate = true
             motifDataList[motifDataList.count - 1] = toSave
-            print("\(motifDataList[motifDataList.count - 1].emotionList)")
         } else {
             valUpdate = false
             motifDataList.append(toSave)

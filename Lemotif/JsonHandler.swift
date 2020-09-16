@@ -125,7 +125,6 @@ class JsonHandler {
                         //create json object from data
                          var jsonData = try JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions()) as NSData
                         let jsonString = NSString(data: jsonData as Data, encoding: String.Encoding.utf8.rawValue) as! String
-                        print("json string = \(jsonString)")
                         
                         //handle json
                                                

@@ -33,7 +33,6 @@ class EntryDetailViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("viewdidappear in entry detail")
         if (TableManager.selectedIndex != -1){
             var  currMotif = TableManager.motifDataList[TableManager.motifDataList.count - 1 - TableManager.selectedIndex]
             var currTopics = currMotif.topicList
