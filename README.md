@@ -11,11 +11,6 @@ This project aims to provide a user friendly interface for Lemotif on IOS served
 3. Generated motif can be saved or the user can simply return to the start screen.
 4. The saved model can be viewed on the second tab, which shows the list of previously generated models. Clicking on one of them will show detailed information about the selected entry.
 
-<video height="320"  controls>
-  <source src="media/demo.mp4" type="video/mp4">
-Motif Generation Demo
-</video>
-
 
 The application can be simulated via Xcode on MacOS supported devices and loaded locally on a phone by selecting the device connected to computer as a simulator. 
 
